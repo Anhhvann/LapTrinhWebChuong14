@@ -1,7 +1,6 @@
 package murach.email;
 
 import java.io.*;
-import jakarta.mail.MessagingException;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 
@@ -53,7 +52,7 @@ public class EmailListServlet extends HttpServlet {
             try {
                 MailUtilSendGrid.sendMail(to, subject, body, isBodyHTML);
             }
-            catch (MessagingException e) {
+            catch (Exception e) {   // <-- SendGrid dùng IOException + RuntimeException
 
                 String errorMessage =
                         "ERROR: Unable to send email.<br>" +
